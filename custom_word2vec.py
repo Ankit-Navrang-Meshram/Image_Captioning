@@ -56,6 +56,7 @@ class Utility():
         self.word2idx = {w: idx for idx, w in enumerate(self.vocab)}
         self.idx2word = {idx: w for w, idx in self.word2idx.items()}
         self.vocab_size = len(self.vocab)
+        self.embedding_dim = 300
 
 
     def get_negative_samples(self, batch_size, n_neg=5):
@@ -76,21 +77,21 @@ class Utility():
         return pairs
 
 
-    def train(self):
+    def train(self , args=None):
         # Hyperparameters
-        embedding_dim = 300
+        
         window_size = 5
         n_neg = 5
         batch_size = 512
-        epochs = 45
+        epochs = args.epochs if args else 5
         learning_rate = 0.001
 
         # Model, optimizer
-        device = torch.device("cuda:4" if torch.cuda.is_available() else "cpu")
-        model = SkipGramNegSampling(self.vocab_size, embedding_dim).to(device)
+        device = torch.device(f"cuda:{args.gpu_id}" if torch.cuda.is_available() else "cpu")
+        model = SkipGramNegSampling(self.vocab_size, self.embedding_dim).to(device)
         optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
-        pairs = self.generate_skipgram_data(self.corpus, window_size=5)
+        pairs = self.generate_skipgram_data(window_size=5)
         # Convert pairs to tensor
         pairs_tensor = torch.tensor(pairs, dtype=torch.long)
 
@@ -121,7 +122,7 @@ class Utility():
         torch.save(model.state_dict(), "custom_kipgram_model.pth")
 
     def return_essentials(self):
-        return self.vocab, self.word2idx, self.idx2word, self.vocab_size
+        return self.vocab, self.word2idx, self.idx2word, self.vocab_size , self.embedding_dim
 
 
 class preprocess:
@@ -150,13 +151,15 @@ class preprocess:
             if token.text not in preprocess.stop_words and not token.is_space
         ]
 
-        return  tokens #" ".join(tokens)
+        return  " ".join(tokens)
 
 if __name__ == "__main__":
     args = parse.ArgumentParser()
     args.add_argument("--data_path", type=str, default="/home/mudasir/ankit/NLP/bbc", help="Enter the path to the text data file")
+    args.add_argument("--gpu_id", type=int, default=3, help="Enter the GPU id to use")
+    args.add_argument("--epochs", type=int, default=5, help="Enter the number of epochs to train the model")
     parsed_args = args.parse_args()
-    dataset_path = args.get("data_path")
+    dataset_path = parsed_args.data_path
 
     topic = os.listdir(dataset_path)
 
@@ -187,7 +190,7 @@ if __name__ == "__main__":
     corpus.append("UNK") # for oov words
 
     u = Utility(corpus)
-    u.train()
+    u.train(parsed_args)
 
 
 

@@ -1,0 +1,26 @@
+# --- System & Python ---
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# --- Datasets ---
+data/
+flickr8k.zip
+flicker_dataset_download.txt
+
+# --- Large Model Files & Checkpoints ---
+# Ignore all checkpoint folders in sub-directories
+**/checkpoints/
+**/weights/
+
+# Ignore specific large file types anywhere
+*.pth
+*.pth.tar
+*.bin
+*.pkl
+*.h5
+
+# --- Features (Can be regenerated) ---
+features.pkl
+vocab.pkl

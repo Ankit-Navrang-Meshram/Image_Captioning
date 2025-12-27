@@ -32,16 +32,19 @@ This project includes a comparative study of these models and a fully containeri
 └── requirements.txt         # Dependencies
 
 ```
-
 ---
 
-##🛠️ Setup & Installation###1. Clone Repository```bash
+## 🛠️ Setup & Installation
+
+### 1. Clone Repository
+
+```bash
 git clone https://github.com/Ankit-Navrang-Meshram/Image_Captioning.git
 cd image-captioning-project
 
 ```
 
-###2. Create EnvironmentWe recommend using Conda to manage dependencies.
+### 2. Create EnvironmentWe recommend using Conda to manage dependencies.
 
 ```bash
 conda create -n img_cap python=3.10 -y
@@ -51,7 +54,7 @@ pip install git+[https://github.com/openai/CLIP.git](https://github.com/openai/C
 
 ```
 
-###3. Download DatasetDownload the **Flickr8k** dataset from [Kaggle](https://www.kaggle.com/datasets/adityajn105/flickr8k) and unzip it into the `data/` folder.
+### 3. Download DatasetDownload the **Flickr8k** dataset from [Kaggle](https://www.kaggle.com/datasets/adityajn105/flickr8k) and unzip it into the `data/` folder.
 
 ```text
 data/
@@ -64,9 +67,10 @@ data/
 
 ---
 
-##🧠 Training the ModelsYou can train each model independently.
+## 🧠 Training the ModelsYou can train each model independently.
 
-###Model A: CNN + LSTM```bash
+### Model A: CNN + LSTM
+```bash
 cd model_cnn_lstm
 python train.py
 # Evaluation
@@ -74,7 +78,9 @@ python evaluate.py
 
 ```
 
-###Model B: CLIP + GPT-2```bash
+### Model B: CLIP + GPT-2
+
+```bash
 cd model_clip_gpt
 # 1. Extract CLIP features first (Speeds up training)
 python extract_features.py
@@ -83,7 +89,8 @@ python train.py
 
 ```
 
-###Model C: ViT + GPT-2```bash
+### Model C: ViT + GPT-2
+```bash
 cd model_vit_gpt
 python train.py
 
@@ -91,9 +98,9 @@ python train.py
 
 ---
 
-##🐳 Deployment (The App)We use **Docker Compose** to launch the Frontend and Backend simultaneously.
+## 🐳 Deployment (The App)We use **Docker Compose** to launch the Frontend and Backend simultaneously.
 
-###1. Prepare WeightsBefore running the app, you must move your trained checkpoints into the backend weights folder.
+### 1. Prepare WeightsBefore running the app, you must move your trained checkpoints into the backend weights folder.
 
 ```bash
 # Create directory
@@ -113,20 +120,21 @@ cp model_cnn_lstm/vocab.pkl app_deploy/backend/vocab.pkl
 
 ```
 
-###2. Run with Docker```bash
+### 2. Run with Docker
+```bash
 cd app_deploy
 docker-compose up --build
 
 ```
 
-###3. Access the AppOpen your browser and go to:
+### 3. Access the AppOpen your browser and go to:
 
 * **Frontend (UI):** `http://localhost:8501`
 * **Backend (API Docs):** `http://localhost:8000/docs`
 
 ---
 
-##📊 Results (BLEU Scores)| Model | BLEU-1 | BLEU-4 | Notes |
+## 📊 Results (BLEU Scores)| Model | BLEU-1 | BLEU-4 | Notes |
 | --- | --- | --- | --- |
 | **CNN + LSTM** | ~55.0 | ~15.0 | Baseline performance. |
 | **CLIP + GPT** | ~65.0 | ~22.0 | Best object detection & context. |
@@ -134,7 +142,7 @@ docker-compose up --build
 
 ---
 
-##📜 Credits* **Dataset:** [Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k)
+## 📜 Credits* **Dataset:** [Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k)
 * **CLIP:** [OpenAI](https://github.com/openai/CLIP)
 * **Transformers:** [Hugging Face](https://huggingface.co/)
 

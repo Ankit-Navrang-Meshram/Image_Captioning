@@ -138,12 +138,13 @@ docker-compose up --build
 | Model | BLEU-1 | BLEU-4 | Notes |
 | --- | --- | --- | --- |
 | **CNN + LSTM** | ~55.0 | ~15.0 | Baseline performance. |
-| **CLIP + GPT** | ~65.0 | ~22.0 | Best object detection & context. |
-| **ViT + GPT** | ~68.0 | ~24.0 | State-of-the-Art performance. |
+| **CLIP + GPT** | ~65.0 | ~22.0 | Better than Baseline. |
+| **ViT + GPT** | ~68.0 | ~24.0 | Best performance. |
 
 ---
 
-## 📜 Credits* **Dataset:** [Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k)
+## 📜 Credits* 
+**Dataset:** [Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k)
 * **CLIP:** [OpenAI](https://github.com/openai/CLIP)
 * **Transformers:** [Hugging Face](https://huggingface.co/)
 

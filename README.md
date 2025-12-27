@@ -1,7 +1,4 @@
 
----
-
-```markdown
 # 📸 Comparative Image Captioning System
 
 A full-stack Deep Learning application that generates captions for images using three distinct architectures: **CNN+LSTM**, **CLIP+GPT-2**, and **ViT+GPT-2**.

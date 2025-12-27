@@ -143,11 +143,8 @@ docker-compose up --build
 
 ---
 
-## 📜 Credits* 
+## 📜 Credits 
 **Dataset:** [Flickr8k](https://www.kaggle.com/datasets/adityajn105/flickr8k)
 * **CLIP:** [OpenAI](https://github.com/openai/CLIP)
 * **Transformers:** [Hugging Face](https://huggingface.co/)
 
-```
-
-```

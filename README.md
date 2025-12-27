@@ -39,7 +39,7 @@ This project includes a comparative study of these models and a fully containeri
 ---
 
 ##🛠️ Setup & Installation###1. Clone Repository```bash
-git clone [https://github.com/YOUR_USERNAME/image-captioning-project.git](https://github.com/YOUR_USERNAME/image-captioning-project.git)
+git clone https://github.com/Ankit-Navrang-Meshram/Image_Captioning.git
 cd image-captioning-project
 
 ```

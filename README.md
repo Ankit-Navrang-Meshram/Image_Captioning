@@ -134,7 +134,8 @@ docker-compose up --build
 
 ---
 
-## 📊 Results (BLEU Scores)| Model | BLEU-1 | BLEU-4 | Notes |
+## 📊 Results (BLEU Scores)
+| Model | BLEU-1 | BLEU-4 | Notes |
 | --- | --- | --- | --- |
 | **CNN + LSTM** | ~55.0 | ~15.0 | Baseline performance. |
 | **CLIP + GPT** | ~65.0 | ~22.0 | Best object detection & context. |
